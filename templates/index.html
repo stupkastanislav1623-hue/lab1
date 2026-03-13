@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborative Grid</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Collaborative Grid</h1>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Підключено клієнтів:</span>
+                    <span id="clients-count" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Активних клітинок:</span>
+                    <span id="active-cells" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Розмір сітки:</span>
+                    <span id="grid-size" class="stat-value">100x60</span>
+                </div>
+            </div>
+        </header>
+        
+        <div class="grid-container">
+            <div id="grid" class="grid"></div>
+        </div>
+        
+        <div class="controls">
+            <button id="clear-grid" class="btn">Очистити сітку</button>
+            <button id="random-fill" class="btn">Випадкове заповнення</button>
+            <button id="refresh-stats" class="btn">Оновити статистику</button>
+        </div>
+        
+        <div id="status" class="status">Статус: Підключення до сервера...</div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
